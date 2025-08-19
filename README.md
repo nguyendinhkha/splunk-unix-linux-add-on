@@ -74,7 +74,7 @@ sudo dpkg -i splunk-10.0.0-e8eb0c4654f8-linux-amd64.deb
 <img width="1181" height="562" alt="image" src="https://github.com/user-attachments/assets/0ca2b59b-418d-4b72-b4c8-fc48dab0b206" />
 🧾 What the installer output means:
 
-> **TL;DR:** If you see `Setting up splunk (10.0.0) ...` followed by `complete`, the install succeeded.
+> If you see `Setting up splunk (10.0.0) ...` followed by `complete`, the install succeeded.
 
 | What you see | What it means |
 |---|---|
@@ -104,9 +104,11 @@ sudo dpkg -i splunk-10.0.0-e8eb0c4654f8-linux-amd64.deb
 
 
 ```bash
-sudo /opt/splunk/bin/splunk enable boot-start --accept-license --answer-yes
-sudo /opt/splunk/bin/splunk start
+sudo /opt/splunk/bin/splunk start --accept-license
 ```
+<img width="1118" height="473" alt="image" src="https://github.com/user-attachments/assets/1e53fd13-1bdb-4606-b0d7-f29b66815292" />
+<img width="1514" height="682" alt="image" src="https://github.com/user-attachments/assets/b04a75f8-d96b-4568-ab40-06f8995c4dce" />
+<img width="1517" height="456" alt="image" src="https://github.com/user-attachments/assets/8354c5ef-5700-4af0-b2c9-47068d001000" />
 
 
 
