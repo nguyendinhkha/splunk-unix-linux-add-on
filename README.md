@@ -93,7 +93,7 @@ sudo dpkg -i splunk-10.0.0-e8eb0c4654f8-linux-amd64.deb
 * What it is: Splunk’s embedded document store for small structured data. Records are JSON docs in collections with an automatic primary key _key. Data lives under $SPLUNK_DB/kvstore/ and is managed by splunkd.
 * How you use it:
   * SPL: | inputlookup / | lookup / | outputlookup when the lookup definition points to a KV Store collection.
-  * REST: CRUD and queries via /servicesNS/{owner}/{app}/storage/collections/data/{collection} (supports where=, limit=, sort=).
+  * REST: CRUD and queries via _/servicesNS/{owner}/{app}/storage/collections/data/{collection}_ (supports where=, limit=, sort=).
 * Good for: Enrichment/reference tables, app state, user prefs, asset/inventory lists—data that changes often but isn’t large enough to index as events.
 * Not for: Large analytic datasets, heavy write throughput, or relational-style joins—use indexes or an external DB instead.
 * Why mentioned during install/upgrade: The installer validates KVStore path/permissions and checks version/schema compatibility; may stage migrations. PASSED (result: 0) means you’re safe to proceed. In SHC, this is coordinated across members.
