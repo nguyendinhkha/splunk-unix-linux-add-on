@@ -159,9 +159,6 @@ Below are representative log lines you’ll see on first start and what each one
 | `9997`               | Forwarder ingest (TCP). Receiver for Universal/Heavy Forwarders. Enable with `splunk enable listen 9997`.                   |
 | `514/tcp`, `514/udp` | Syslog (optional). Only open if you ingest raw syslog directly.       
 
-
-<img width="1665" height="991" alt="image" src="https://github.com/user-attachments/assets/a98e8cca-274b-413d-a63a-fa2795ca758b" />
-
 ### Important paths 
 | What you see                         | What it means                                                                                                              |
 | ------------------------------------ | -------------------------------------------------------------------------------------------------------------------------- |
@@ -171,6 +168,7 @@ Below are representative log lines you’ll see on first start and what each one
 | `/opt/splunk/var/lib/splunk`         | Data directories: index buckets (hot/warm/cold), fishbuckets, KV Store data.                                               |
 | `/opt/splunk/etc/openldap/ldap.conf` | LDAP/SSO seed config used when integrating directory services.  
 
+<img width="1665" height="991" alt="image" src="https://github.com/user-attachments/assets/a98e8cca-274b-413d-a63a-fa2795ca758b" />
 
 ### 2) Install the Splunk Add-on for Unix and Linux
 
