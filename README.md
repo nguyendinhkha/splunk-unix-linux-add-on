@@ -91,11 +91,11 @@ sudo dpkg -i splunk-10.0.0-e8eb0c4654f8-linux-amd64.deb
 
 🗄️ KVStore — concise notes (expand later)
 
-Purpose: Built‑in key–value database for small structured/JSON data Splunk and apps need at search time (beyond indexed events).
+* Purpose: Built‑in key–value database for small structured/JSON data Splunk and apps need at search time (beyond indexed events).
 
-Usage: Lookups and enrichment tables, app state, user preferences, asset/inventory data—stored as collections and accessed via lookups/REST.
+* Usage: Lookups and enrichment tables, app state, user preferences, asset/inventory data—stored as collections and accessed via lookups/REST.
 
-Why mentioned during install: Installer validates the KVStore path and runs upgrade prechecks to ensure data compatibility; PASSED (result: 0) means safe to proceed. bash /opt/splunk/bin/splunk version /opt/splunk/bin/splunk status
+* Why mentioned during install: Installer validates the KVStore path and runs upgrade prechecks to ensure data compatibility; PASSED (result: 0) means safe to proceed. bash /opt/splunk/bin/splunk version /opt/splunk/bin/splunk status
 
 
 ```bash
