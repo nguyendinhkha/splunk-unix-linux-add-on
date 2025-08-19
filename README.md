@@ -1,6 +1,6 @@
 # Splunk Add-on for Unix and Linux (TA-unix)
 
-> A concise, practical README to help you (and teammates) install, configure, and get value fast from the **Splunk Add-on for Unix and Linux** on Splunk Enterprise.
+> A concise, practical README to help you install, configure, and get value fast from the **Splunk Add-on for Unix and Linux** on Splunk Enterprise.
 
 ![status](https://img.shields.io/badge/status-active-brightgreen) ![splunk](https://img.shields.io/badge/Splunk-Enterprise%2010%2B-blue) ![linux](https://img.shields.io/badge/Linux-amd64-lightgrey)
 
@@ -60,16 +60,27 @@ The **Splunk Add-on for Unix and Linux (TA-unix)** collects host metrics and sys
 
 Below installs Splunk Enterprise locally (Ubuntu/Debian-style host) and gets TA-unix running quickly.
 
-### 1) Install Splunk Enterprise (example commands)
+### 1) Install Splunk Enterprise
 
 ```bash
 wget -O splunk-10.0.0-e8eb0c4654f8-linux-amd64.deb "https://download.splunk.com/products/splunk/releases/10.0.0/linux/splunk-10.0.0-e8eb0c4654f8-linux-amd64.deb"
+```
 
+
+```bash
 sudo dpkg -i splunk-10.0.0-e8eb0c4654f8-linux-amd64.deb
+```
+<img width="1181" height="562" alt="image" src="https://github.com/user-attachments/assets/0ca2b59b-418d-4b72-b4c8-fc48dab0b206" />
 
+
+
+
+```bash
 sudo /opt/splunk/bin/splunk enable boot-start --accept-license --answer-yes
 sudo /opt/splunk/bin/splunk start
 ```
+
+
 
 ### 2) Install the Splunk Add-on for Unix and Linux
 
