@@ -150,24 +150,26 @@ Below are representative log lines you’ll see on first start and what each one
 *  The Splunk web interface is at http://<hostname>:8000 -> Browse to that URL and log in with the admin credentials you just set.
 
 ### Ports & services
--------------------------|------:|----------------------------------------|
-| Splunk Web (HTTP/HTTPS)    | 8000  | Can enable HTTPS and/or change port    |
-| Management / REST (splunkd)| 8089  | CLI, inter-node comms, app mgmt        |
-| Appserver (internal)       | 8065  | UI app backend (local only)            |
-| KV Store                   | 8191  | Embedded MongoDB                        |
-| Forwarder ingest (TCP)     | 9997  | Enable when acting as an indexer       |
-| Syslog (optional)          | 514   | TCP/UDP if ingesting raw syslog        |
+| What you see         | What it means                                                                                                               |
+| -------------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| `8000`               | Splunk Web (UI). Access the product. Enable HTTPS with `splunk enable web-ssl` or change with `splunk set web-port <port>`. |
+| `8089`               | Management / REST (`splunkd`). Used by the CLI, inter‑node communications, deployment, and many apps.                       |
+| `8065`               | Appserver (internal). UI backend that listens on `127.0.0.1` by default.                                                    |
+| `8191`               | KV Store (embedded MongoDB). Stores lookups/state for apps and features.                                                    |
+| `9997`               | Forwarder ingest (TCP). Receiver for Universal/Heavy Forwarders. Enable with `splunk enable listen 9997`.                   |
+| `514/tcp`, `514/udp` | Syslog (optional). Only open if you ingest raw syslog directly.       
 
 
 <img width="1665" height="991" alt="image" src="https://github.com/user-attachments/assets/a98e8cca-274b-413d-a63a-fa2795ca758b" />
 
 ### Important paths 
------------------------------------|-------------------------------------------|
-| /opt/splunk/etc                    | Configuration tree                        |
-| /opt/splunk/etc/auth               | TLS keys/certs                            |
-| /opt/splunk/var/log/splunk         | Runtime logs (e.g., splunkd.log)        |
-| /opt/splunk/var/lib/splunk         | Indexes, KV Store data                    |
-| /opt/splunk/etc/openldap/ldap.conf | LDAP/SSO seed config                      |
+| What you see                         | What it means                                                                                                              |
+| ------------------------------------ | -------------------------------------------------------------------------------------------------------------------------- |
+| `/opt/splunk/etc`                    | Configuration tree. Apps in `etc/apps/`; system defaults in `etc/system/default/`; local overrides in `etc/system/local/`. |
+| `/opt/splunk/etc/auth`               | TLS keys/certs for Splunk Web & management endpoints. Replace with enterprise PKI in production.                           |
+| `/opt/splunk/var/log/splunk`         | Runtime logs (e.g., `splunkd.log`, `web_service.log`, `scheduler.log`). First place to check on issues.                    |
+| `/opt/splunk/var/lib/splunk`         | Data directories: index buckets (hot/warm/cold), fishbuckets, KV Store data.                                               |
+| `/opt/splunk/etc/openldap/ldap.conf` | LDAP/SSO seed config used when integrating directory services.  
 
 
 ### 2) Install the Splunk Add-on for Unix and Linux
