@@ -116,44 +116,58 @@ sudo /opt/splunk/bin/splunk start --accept-license
 Below are representative log lines you’ll see on first start and what each one indicates.
 
 ### 1) First-run initialization
-Please enter an administrator username/passwordCreates the local admin user (min 8 printable ASCII chars; complexity enforced).
-Copying '/opt/splunk/etc/openldap/ldap.conf.default' to '/opt/splunk/etc/openldap/ldap.conf'Seeds a default LDAP/SSO config file for future directory integration.
-Writing RSA key / writing RSA keyGenerates private key material used for TLS.
-Moving '.../search_mrsparkle/modules.new' to '.../modules'Installs web UI assets for Splunk Web.
+* Please enter an administrator username/password -> Creates the local admin user (min 8 printable ASCII chars; complexity enforced).
+*  Copying '/opt/splunk/etc/openldap/ldap.conf.default' to '/opt/splunk/etc/openldap/ldap.conf' -> Seeds a default LDAP/SSO config file for future directory integration.
+*  Writing RSA key / writing RSA key -> Generates private key material used for TLS.
+*  Moving '.../search_mrsparkle/modules.new' to '.../modules' -> Installs web UI assets for Splunk Web.
 
 ### 2) Preflight checks (ports & prereqs)
-Checking http port [8000]: open → Splunk Web will bind here.
-Checking mgmt port [8089]: open → splunkd management/REST endpoint.
-Checking appserver port [127.0.0.1:8065]: open → Internal app server for the UI.
-Checking kvstore port [8191]: open → KV Store (embedded MongoDB).All must be free; “open” here means available for Splunk to use.
+*  Checking http port [8000]: open → Splunk Web will bind here.
+*  Checking mgmt port [8089]: open → splunkd management/REST endpoint.
+*  Checking appserver port [127.0.0.1:8065]: open → Internal app server for the UI.
+*  Checking kvstore port [8191]: open → KV Store (embedded MongoDB). -> All must be free; “open” here means available for Splunk to use.
 
 ### 3) Filesystem & config layout
-Creating: /opt/splunk/var/lib/splunk ... /opt/splunk/var/run/splunkBuilds the runtime tree (logs, indexes, dispatch, lookups).
-New certs have been generated in '/opt/splunk/etc/auth'Creates self-signed certificates for management/web TLS.
-Checking critical directories... DoneOwnership/permissions look correct.
+*  Creating: /opt/splunk/var/lib/splunk ... /opt/splunk/var/run/splunk -> Builds the runtime tree (logs, indexes, dispatch, lookups).
+*  New certs have been generated in '/opt/splunk/etc/auth' -> Creates self-signed certificates for management/web TLS.
+*  Checking critical directories... Done -> Ownership/permissions look correct.
 
 ### 4) Index initialization
-
-Validated: _internal _audit _introspection ... main summaryCreates/validates built-in indexes used for telemetry, audits, and searches.
+*  Validated: _internal _audit _introspection ... main summary -> Creates/validates built-in indexes used for telemetry, audits, and searches.
 
 ### 5) Integrity & configuration validation
-Checking filesystem compatibility... DoneVerifies kernel/filesystem features are acceptable.
-Checking conf files for problems... DoneLints all *.conf files and confirms defaults weren’t modified in place.
-Validating installed files against hashes ... All installed files intact.Package integrity check passed.
-All preliminary checks passed.Safe to start services.
+*  Checking filesystem compatibility... Done -> Verifies kernel/filesystem features are acceptable.
+*  Checking conf files for problems... Done -> Lints all *.conf files and confirms defaults weren’t modified in place.
+*  Validating installed files against hashes ... All installed files intact. -> Package integrity check passed.
+*  All preliminary checks passed. -> Safe to start services.
 
 ### 6) Daemon start & certificate provisioning
-Starting splunk server daemon (splunkd)...Launches the core service.
-Certificate request self-signature ok / DoneConfirms TLS artifacts were created successfully.
+* Starting splunk server daemon (splunkd)... -> Launches the core service.
+*  Certificate request self-signature ok / Done -> Confirms TLS artifacts were created successfully.
 
 ### 7) Web UI ready
-Waiting for web server at http://127.0.0.1:8000 to be available ... DoneSplunk Web is up and listening.
-The Splunk web interface is at http://<hostname>:8000Browse to that URL and log in with the admin credentials you just set.
+*  Waiting for web server at http://127.0.0.1:8000 to be available ... Done -> Splunk Web is up and listening.
+*  The Splunk web interface is at http://<hostname>:8000 -> Browse to that URL and log in with the admin credentials you just set.
 
 ### Ports & services
+-------------------------|------:|----------------------------------------|
+| Splunk Web (HTTP/HTTPS)    | 8000  | Can enable HTTPS and/or change port    |
+| Management / REST (splunkd)| 8089  | CLI, inter-node comms, app mgmt        |
+| Appserver (internal)       | 8065  | UI app backend (local only)            |
+| KV Store                   | 8191  | Embedded MongoDB                        |
+| Forwarder ingest (TCP)     | 9997  | Enable when acting as an indexer       |
+| Syslog (optional)          | 514   | TCP/UDP if ingesting raw syslog        |
+
+
 <img width="1665" height="991" alt="image" src="https://github.com/user-attachments/assets/a98e8cca-274b-413d-a63a-fa2795ca758b" />
 
-
+### Important paths 
+-----------------------------------|-------------------------------------------|
+| /opt/splunk/etc                    | Configuration tree                        |
+| /opt/splunk/etc/auth               | TLS keys/certs                            |
+| /opt/splunk/var/log/splunk         | Runtime logs (e.g., splunkd.log)        |
+| /opt/splunk/var/lib/splunk         | Indexes, KV Store data                    |
+| /opt/splunk/etc/openldap/ldap.conf | LDAP/SSO seed config                      |
 
 
 ### 2) Install the Splunk Add-on for Unix and Linux
