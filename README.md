@@ -112,6 +112,11 @@ sudo /opt/splunk/bin/splunk start --accept-license
 
 
 
+
+<img width="1665" height="991" alt="image" src="https://github.com/user-attachments/assets/a98e8cca-274b-413d-a63a-fa2795ca758b" />
+
+
+
 ### 2) Install the Splunk Add-on for Unix and Linux
 
 **Option A — via CLI (local instance):**
