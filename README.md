@@ -71,7 +71,7 @@ wget -O splunk-10.0.0-e8eb0c4654f8-linux-amd64.deb "https://download.splunk.com/
 sudo dpkg -i splunk-10.0.0-e8eb0c4654f8-linux-amd64.deb
 ```
 <img width="1181" height="562" alt="image" src="https://github.com/user-attachments/assets/0ca2b59b-418d-4b72-b4c8-fc48dab0b206" />
-🧾 What the installer output means
+🧾 What the installer output means:
 > **TL;DR:** If you see `Setting up splunk (10.0.0) ...` followed by `complete`, the install succeeded.
 
 | What you see | What it means |
@@ -89,13 +89,16 @@ sudo dpkg -i splunk-10.0.0-e8eb0c4654f8-linux-amd64.deb
 | `find: '/opt/splunk/lib/python3.7/site-packages': No such file or directory` | Harmless warning: Splunk 10 bundles a newer embedded Python under `/opt/splunk/lib/python3.x/`; the script checks an old 3.7 path. It **does not affect** installation. |
 | `complete` | ✅ `dpkg` finished successfully.
 
-🗄️ KVStore — concise notes (expand later)
+🗄️ KVStore — concise notes
+* What it is: Splunk’s embedded document store for small structured data. Records are JSON docs in collections with an automatic primary key _key. Data lives under $SPLUNK_DB/kvstore/ and is managed by splunkd.
+* How you use it:
+  * SPL: | inputlookup / | lookup / | outputlookup when the lookup definition points to a KV Store collection.
+  * REST: CRUD and queries via /servicesNS/{owner}/{app}/storage/collections/data/{collection} (supports where=, limit=, sort=).
+* Good for: Enrichment/reference tables, app state, user prefs, asset/inventory lists—data that changes often but isn’t large enough to index as events.
+* Not for: Large analytic datasets, heavy write throughput, or relational-style joins—use indexes or an external DB instead.
+* Why mentioned during install/upgrade: The installer validates KVStore path/permissions and checks version/schema compatibility; may stage migrations. PASSED (result: 0) means you’re safe to proceed. In SHC, this is coordinated across members.
+* Ops tips: Watch kvstore.log and splunkd.log for health, include $SPLUNK_DB/kvstore/ in backups, use TTL (_expireAt) to auto-expire stale docs, and ensure disk/ulimits are adequate on search heads.
 
-* Purpose: Built‑in key–value database for small structured/JSON data Splunk and apps need at search time (beyond indexed events).
-
-* Usage: Lookups and enrichment tables, app state, user preferences, asset/inventory data—stored as collections and accessed via lookups/REST.
-
-* Why mentioned during install: Installer validates the KVStore path and runs upgrade prechecks to ensure data compatibility; PASSED (result: 0) means safe to proceed. bash /opt/splunk/bin/splunk version /opt/splunk/bin/splunk status
 
 
 ```bash
