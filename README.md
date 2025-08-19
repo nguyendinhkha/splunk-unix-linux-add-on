@@ -72,6 +72,7 @@ sudo dpkg -i splunk-10.0.0-e8eb0c4654f8-linux-amd64.deb
 ```
 <img width="1181" height="562" alt="image" src="https://github.com/user-attachments/assets/0ca2b59b-418d-4b72-b4c8-fc48dab0b206" />
 🧾 What the installer output means:
+
 > **TL;DR:** If you see `Setting up splunk (10.0.0) ...` followed by `complete`, the install succeeded.
 
 | What you see | What it means |
