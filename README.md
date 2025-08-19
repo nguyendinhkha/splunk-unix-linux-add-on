@@ -71,19 +71,23 @@ wget -O splunk-10.0.0-e8eb0c4654f8-linux-amd64.deb "https://download.splunk.com/
 sudo dpkg -i splunk-10.0.0-e8eb0c4654f8-linux-amd64.deb
 ```
 <img width="1181" height="562" alt="image" src="https://github.com/user-attachments/assets/0ca2b59b-418d-4b72-b4c8-fc48dab0b206" />
-#### 🧾 What the installer output means
-- **(Reading database …)** → 📦 `dpkg` scans what’s already installed.
-- **Preparing to unpack … / preflight** → 🧪 Splunk’s preflight checks basic requirements and environment.
-- **This looks like an upgrade …** → 🔁 You already have Splunk; this is an in‑place reinstall/upgrade. First‑time installs won’t show this.
-- **extracting splunk_preinstall_base64 / Adding execution bit** → 📁 Files and helper scripts are placed, permissions set executable.
-- **KVStore path → `/opt/splunk/var/lib/splunk/kvstore`** → 🗄️ *KVStore* is Splunk’s built‑in key–value database (for lookups, app state, user settings, inventories). This line just reports where its data lives.
-- **CPU Vendor/Family/Model, AVX/SSE4.2/AES‑NI** → 🧠 Hardware features detected for compatibility/diagnostics; not a pass/fail gate here.
-- **Active KVStore version upgrade precheck PASSED / result: 0** → ✅ KVStore data is compatible with this version; `result: 0` means success.
-- **Attempting to stop the installed Splunk Server … / splunkd is not running** → ⏹️ The service was already stopped; proceed.
-- **Unpacking splunk (10.0.0) over (10.0.0)** → 📦 Files are replaced in place.
-- **Setting up splunk (10.0.0)** → ⚙️ Post‑install scripts run (create/update dirs, ownership, services, etc.).
-- **`find: '/opt/splunk/lib/python3.7/site-packages': No such file or directory`** → ℹ️ Harmless. Splunk 10 bundles a newer embedded Python under `/opt/splunk/lib/python3.x/`; the script briefly checks an older 3.7 path and prints a warning when it isn’t there. **It does not affect the installation.**
-- **complete** → 🎉 `dpkg` finished successfully.
+#🧾 What the installer output means
+> **TL;DR:** If you see `Setting up splunk (10.0.0) ...` followed by `complete`, the install succeeded.
+
+| What you see | What it means |
+|---|---|
+| `(Reading database …)` | `dpkg` is scanning existing packages. |
+| `Preparing to unpack … / preflight` | Pre‑install checks; environment looks OK. |
+| `This looks like an upgrade …` | You already had Splunk; this is an in‑place reinstall/upgrade. |
+| `extracting splunk_preinstall_base64 … / Adding execution bit` | Installer places helper scripts and sets executable permissions. |
+| `KVStore path="/opt/splunk/var/lib/splunk/kvstore"` | Location of Splunk’s built‑in key‑value database used by apps/lookups. |
+| `CPU Vendor/Family/Model … AVX/SSE4.2/AES‑NI` | Hardware capabilities detected for diagnostics/perf hints. |
+| `Active KVStore version upgrade precheck PASSED (result: 0)` | KVStore data is compatible — safe to proceed. |
+| `Attempting to stop … / splunkd is not running` | Service was already stopped; that’s fine. |
+| `Unpacking splunk (10.0.0) over (10.0.0)` | Files are being replaced in place. |
+| `Setting up splunk (10.0.0)` | Post‑install scripts run (create/update dirs, services). |
+| `find: '/opt/splunk/lib/python3.7/site-packages': No such file or directory` | Harmless warning: Splunk 10 bundles a newer embedded Python under `/opt/splunk/lib/python3.x/`; the script checks an old 3.7 path. It **does not affect** installation. |
+| `complete` | ✅ `dpkg` finished successfully.
 
 
 
