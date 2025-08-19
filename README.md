@@ -62,11 +62,12 @@ Below installs Splunk Enterprise locally (Ubuntu/Debian-style host) and gets TA-
 
 ### 1) Install Splunk Enterprise
 
+* First we need to download the Splunk Enterprise Debian package:
 ```bash
 wget -O splunk-10.0.0-e8eb0c4654f8-linux-amd64.deb "https://download.splunk.com/products/splunk/releases/10.0.0/linux/splunk-10.0.0-e8eb0c4654f8-linux-amd64.deb"
 ```
 
-
+* Next is to install the package into `/opt/splunk`, running Debian post‑install scripts; if Splunk is already present, it performs an in‑place upgrade:
 ```bash
 sudo dpkg -i splunk-10.0.0-e8eb0c4654f8-linux-amd64.deb
 ```
