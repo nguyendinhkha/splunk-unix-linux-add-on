@@ -64,7 +64,7 @@ Below installs Splunk Enterprise locally (Ubuntu/Debian-style host) and gets TA-
 
 * First we need to download the Splunk Enterprise Debian package:
 ```bash
-wget -O splunk-10.0.0-e8eb0c4654f8-linux-amd64.deb "https://download.splunk.com/products/splunk/releases/10.0.0/linux/splunk-10.0.0-e8eb0c4654f8-linux-amd64.deb"
+sudo wget -O splunk-10.0.0-e8eb0c4654f8-linux-amd64.deb "https://download.splunk.com/products/splunk/releases/10.0.0/linux/splunk-10.0.0-e8eb0c4654f8-linux-amd64.deb"
 ```
 
 * Next is to install the package into `/opt/splunk`, running Debian post‑install scripts; if Splunk is already present, it performs an in‑place upgrade:
@@ -172,15 +172,15 @@ Below are representative log lines you’ll see on first start and what each one
 
 ### 2) Install the Splunk Universal Forwarder
 
-```bash
 # Download
+```bash
 sudo wget -O splunkforwarder-10.0.0-e8eb0c4654f8-linux-amd64.deb "https://download.splunk.com/products/universalforwarder/releases/10.0.0/linux/splunkforwarder-10.0.0-e8eb0c4654f8-linux-amd64.deb"
 ```
 
 <img width="1473" height="397" alt="image" src="https://github.com/user-attachments/assets/1f266347-5ab6-4243-88db-ecb371f405b5" />
 
-```bash
 # Install
+```bash
 sudo dpkg -i splunkforwarder-10.0.0-e8eb0c4654f8-linux-amd64.deb
 ```
 
@@ -188,8 +188,8 @@ sudo dpkg -i splunkforwarder-10.0.0-e8eb0c4654f8-linux-amd64.deb
 
 > ℹ️ If you see find: '/opt/splunkforwarder/lib/python3.7/site-packages': No such file or directory, it’s harmless (legacy path probe); the UF’s embedded Python is newer.
 
-```bash
 # First start (create UF admin + accept license)
+```bash
 sudo /opt/splunkforwarder/bin/splunk start --accept-license
 ```
 
