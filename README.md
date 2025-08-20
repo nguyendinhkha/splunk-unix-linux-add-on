@@ -56,7 +56,7 @@ The **Splunk Add-on for Unix and Linux (TA-unix)** collects host metrics and sys
 
 ---
 
-## Quick Start
+## Quick start
 
 Below installs Splunk Enterprise locally (Ubuntu/Debian-style host) and gets TA-unix running quickly.
 
@@ -102,7 +102,7 @@ sudo dpkg -i splunk-10.0.0-e8eb0c4654f8-linux-amd64.deb
 * Ops tips: Watch kvstore.log and splunkd.log for health, include $SPLUNK_DB/kvstore/ in backups, use TTL (_expireAt) to auto-expire stale docs, and ensure disk/ulimits are adequate on search heads.
 
 
-# first run (accepts license interactively / via flag)
+# First run (accepts license interactively)
 ```bash
 sudo /opt/splunk/bin/splunk start --accept-license
 ```
@@ -172,9 +172,26 @@ Below are representative log lines you’ll see on first start and what each one
 
 ### 2) Install the Splunk Universal Forwarder
 
+```bash
+# Download
+sudo wget -O splunkforwarder-10.0.0-e8eb0c4654f8-linux-amd64.deb "https://download.splunk.com/products/universalforwarder/releases/10.0.0/linux/splunkforwarder-10.0.0-e8eb0c4654f8-linux-amd64.deb"
+```
+
 <img width="1473" height="397" alt="image" src="https://github.com/user-attachments/assets/1f266347-5ab6-4243-88db-ecb371f405b5" />
+
+```bash
+# Install
+sudo dpkg -i splunkforwarder-10.0.0-e8eb0c4654f8-linux-amd64.deb
+```
+
 <img width="1467" height="287" alt="image" src="https://github.com/user-attachments/assets/60a4f012-272c-47a6-bde6-8b5ee2a00b37" />
 
+> ℹ️ If you see find: '/opt/splunkforwarder/lib/python3.7/site-packages': No such file or directory, it’s harmless (legacy path probe); the UF’s embedded Python is newer.
+
+```bash
+# First start (create UF admin + accept license)
+sudo /opt/splunkforwarder/bin/splunk start --accept-license
+```
 
 **Option A — via CLI (local instance):**
 
