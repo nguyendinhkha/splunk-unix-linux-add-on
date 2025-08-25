@@ -193,6 +193,10 @@ sudo dpkg -i splunkforwarder-10.0.0-e8eb0c4654f8-linux-amd64.deb
 sudo /opt/splunkforwarder/bin/splunk start --accept-license
 ```
 
+<img width="1250" height="441" alt="{35C18F13-9090-431F-AC11-20DCDF702DAA}" src="https://github.com/user-attachments/assets/06c37b99-82ed-40c8-a3c0-5eff53aa8eae" />
+<img width="1277" height="581" alt="{57568F49-6DA7-467C-A157-A94C881D0A6B}" src="https://github.com/user-attachments/assets/5978e585-419c-401b-9577-cb9f865cd786" />
+
+
 **Option A — via CLI (local instance):**
 
 ```bash
