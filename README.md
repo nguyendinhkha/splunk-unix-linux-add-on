@@ -177,7 +177,7 @@ Below are representative log lines you’ll see on first start and what each one
 sudo wget -O splunkforwarder-10.0.0-e8eb0c4654f8-linux-amd64.deb "https://download.splunk.com/products/universalforwarder/releases/10.0.0/linux/splunkforwarder-10.0.0-e8eb0c4654f8-linux-amd64.deb"
 ```
 
-<img width="1473" height="397" alt="image" src="https://github.com/user-attachments/assets/1f266347-5ab6-4243-88db-ecb371f405b5" />
+<img width="1579" height="340" alt="{4E6D3B8A-10D4-428C-A468-33C7D77BDB54}" src="https://github.com/user-attachments/assets/a2769da9-e438-4420-9fbc-e5925280f774" />
 
 # Install
 ```bash
