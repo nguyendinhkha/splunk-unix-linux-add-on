@@ -184,7 +184,7 @@ sudo wget -O splunkforwarder-10.0.0-e8eb0c4654f8-linux-amd64.deb "https://downlo
 sudo dpkg -i splunkforwarder-10.0.0-e8eb0c4654f8-linux-amd64.deb
 ```
 
-<img width="1467" height="287" alt="image" src="https://github.com/user-attachments/assets/60a4f012-272c-47a6-bde6-8b5ee2a00b37" />
+<img width="1222" height="324" alt="{3869541F-13E7-42EE-8EE8-233C24D06AF5}" src="https://github.com/user-attachments/assets/f5810fac-6307-4970-93e7-29b41ae3ed9d" />
 
 > ℹ️ If you see find: '/opt/splunkforwarder/lib/python3.7/site-packages': No such file or directory, it’s harmless (legacy path probe); the UF’s embedded Python is newer.
 
