@@ -168,7 +168,7 @@ Below are representative log lines you’ll see on first start and what each one
 | `/opt/splunk/var/lib/splunk`         | Data directories: index buckets (hot/warm/cold), fishbuckets, KV Store data.                                               |
 | `/opt/splunk/etc/openldap/ldap.conf` | LDAP/SSO seed config used when integrating directory services.  
 
-<img width="1665" height="991" alt="image" src="https://github.com/user-attachments/assets/a98e8cca-274b-413d-a63a-fa2795ca758b" />
+<img width="1898" height="840" alt="{EFF8D912-02F7-4BFE-B663-91AB3CE1F410}" src="https://github.com/user-attachments/assets/3e9810ec-9bb5-45b8-9af3-7e4f742a08f2" />
 
 ### 2) Install the Splunk Universal Forwarder
 
